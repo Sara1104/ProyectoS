@@ -11,10 +11,10 @@
 	}
 
 	include "../../conexion.php";
-	require_once '../pdf/vendor/autoload.php';
+	require_once '../../vendor/autoload.php';
 	use Dompdf\Dompdf;
 
-use function Composer\Autoload\includeFile;
+	use function Composer\Autoload\includeFile;
 
 	if(empty($_REQUEST['cl']) || empty($_REQUEST['f']))
 	{

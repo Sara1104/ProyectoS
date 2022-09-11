@@ -1,0 +1,17 @@
+{
+    "name": "proyecto/sara",
+    "require": {
+        "dompdf/dompdf": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Proyecto\\Sara\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sara Vargas",
+            "email": "saravargas864@gmail.com"
+        }
+    ]
+}
