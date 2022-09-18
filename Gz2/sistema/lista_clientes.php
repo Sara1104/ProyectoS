@@ -42,7 +42,7 @@
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
-			$por_pagina = 5;
+			$por_pagina = 10;
 
 			if(empty($_GET['pagina']))
 			{
@@ -65,7 +65,7 @@
 				while ($data = mysqli_fetch_array($query)) {
 					if($data["nit"] == 0)
 					{
-						$nit = 'S/R'; //Sin Registro nit//
+						$nit = 'C/F'; //Sin Registro nit//
 						}else{
                         $nit = $data["nit"]; 
 					}		

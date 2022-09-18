@@ -463,7 +463,7 @@ table td{
 
 }	
 
-#form_add_product, #form_del_product{
+#form_add_product, #form_del_product, #form_anular_factura{
 	width: 420px;
 	text-align: center;
 }
@@ -558,8 +558,177 @@ table td{
 	color: #FFF;
 }
 
+.form_search_date{
+	padding: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	border-radius: 10px;
+	margin: 10px auto;	
+}
+.form_search_date label{
+	margin: 0 10px;
+}
+.form_search_date input{
+	width: auto;
+}
+.form_search_date .btn_view{
+	padding: 8px;
+}
+.btn_view{
+	background-color: #1faac8;
+	border: 0;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 10px;
+	margin: 0 3px;
+	color: #FFF;
+}
 
+.div_acciones{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+}
+.totalfactura{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+}
+.pagada, .anulada{
+	color: #FFF;
+	background: #60a756;
+	text-align: center;
+	border-radius: 5px;
+	padding: 4px 15px;
+}
+.anulada{
+	background: #f36a6a;
+}
+.inactive{
+	background-color: #a4a4a4;
+	color: #CCC;
+	cursor: default;
+}
+/*============Panel de control ============*/
+.titlePanelControl{
+	width: 100%;
+	background: #FFF;
+	padding: 5px 15px;
+	margin-bottom: 10px;
+	font-size: 18pt !important;
+	color: #0a4661;
+}
+.divContainer{
+	margin-bottom: 20px;
 
+}
+.dashboard{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	margin: auto;
+}
+.dashboard a{
+	color: #898989;
+	width: calc(100% / 5);
+	padding: 20px;
+	background-color: #FFF;
+	font-size: 25pt;
+	text-align: center;
+}
+.dashboard p{
+	color: #3279a7;
+}
+.dashboard a span{
+	font-weight: bold;
+	font-size: 14pt;
+}
+.containerPerfil{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+.containerDataUser, .containerDataEmpresa{
+	width: 500px;
+	background-color: #FFF;
+	padding: 20px;
+}
+.logoUser, .logoEmpresa{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin: 20px auto;
+	padding: 25px;
+	
+}
+.logoUser img, .logoEmpresa img{
+	width: 100%;
+	height: 100%;
+}
+.divDataUser{
+	padding: 10px;
+	margin: auto;
+}
+.divInfoSistema h4{
+	background: #3279a7;
+	padding: 5px 10px;
+	color: #FFF;
+	border-radius: 5px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.divDataUser > div{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+.divDataUser label{
+	width: 150px;
+	margin: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.divDataUser span{
+	padding: 5px;
+}
+.divInfoSistema form{
+	padding: 20px;
+}
+.divInfoSistema input{
+	margin-bottom: 10px;
+}
+.divInfoSistema button{
+	width: 100%;
+}
+.alertChangePass{
+	text-align: center;
+	font-weight: bold ;
+}
 
 
 

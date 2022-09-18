@@ -48,7 +48,7 @@ if($_SESSION['rol'] != 1 and $_SESSION['rol'] != 2 )
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
-			$por_pagina = 5;
+			$por_pagina = 7;
 
 			if(empty($_GET['pagina']))
 			{

@@ -430,6 +430,134 @@ if($_POST['action'] == 'infoProducto')
 
       }
 
+      // Info Factura
+      if ($_POST['action'] == 'infoFactura'){
+         if(!empty($_POST['nofactura'])){
+
+            $nofactura = $_POST['nofactura'];
+
+            $query = mysqli_query($conection,"SELECT * FROM factura WHERE nofactura = '$nofactura' AND
+               estatus = 1");
+            mysqli_close($conection);
+
+            $result = mysqli_num_rows($query);
+            if ($result > 0){
+
+               $data = mysqli_fetch_assoc($query);
+               echo json_encode($data, JSON_UNESCAPED_UNICODE);
+               exit;
+
+            }
+         }
+         echo "error";
+         exit;
+      } 
+
+      // Anular Factura
+      if($_POST['action'] == 'anularFactura'){
+
+         if(!empty($_POST['nofactura']))
+         {
+            $nofactura = $_POST['nofactura'];
+            
+            $query_anular = mysqli_query($conection,"CALL anular_factura($nofactura)");
+            mysqli_close($conection);
+            $result = mysqli_num_rows($query_anular);
+            
+            if ($result > 0){
+               $data = mysqli_fetch_assoc($query_anular);
+               echo json_encode($data,JSON_UNESCAPED_UNICODE);
+               exit;
+            }
+         }
+         echo"error";
+         exit;
+      }
+
+      // Cambiar contraseña 
+      if($_POST['action'] == 'changePassword'){
+
+         if(!empty($_POST['passActual']) && !empty($_POST['passNuevo']))
+         {
+            $password = md5($_POST['passActual']);
+            $newPass = md5($_POST['passNuevo']);
+            $idUser = $_SESSION['idUser'];
+
+            $code = '';
+            $msg = '';
+            $arrData = array();
+
+            $query_user = mysqli_query($conection,"SELECT * FROM usuario
+                                                   WHERE clave = '$password' AND idusuario = $idUser");
+            $result  = mysqli_num_rows($query_user);
+            if($result > 0)
+            {
+               $query_update = mysqli_query($conection,"UPDATE usuario SET clave = '$newPass'  WHERE idusuario = $idUser");
+               mysqli_close($conection);
+
+               if($query_update){
+                  $code = '00';
+                  $msg = "Su contraseña se ha actualizado con éxito.";
+               }else{
+                  $code = '2';
+                  $msg = "No fue posible cambiar su contraseña.";
+               }
+            }else{
+               $code = '1';
+               $msg = "La contraseña actual es incorrecta.";
+            }
+            $arrData = array('cod' => $code,'msg' => $msg);
+            echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
+           
+         }else{
+            echo "error";
+         }
+ 
+         exit;
+      }
+
+      //Actualizar datos empresa
+
+      if($_POST['action'] == 'updateDataEmpresa'){
+
+         if(empty($_POST['txtNit']) || empty($_POST['txtNombre']) || empty($_POST['txtRSocial']) || empty($_POST['txtTelEmpresa'])
+         || empty($_POST['txtEmailEmpresa']) || empty($_POST['txtDirEmpresa']) || empty($_POST['txtIva']))
+         {
+            $code = '1';
+            $msg = "Todos los campos son obligatorios";
+         }else{
+
+            $intNit         = intval($_POST['txtNit']);
+            $strNombre      = $_POST['txtNombre'];
+            $strRSocial     = $_POST['txtRSocial'];
+            $intTel         = intval($_POST['txtTelEmpresa']);
+            $strEmail       = $_POST['txtEmailEmpresa'];
+            $strDir         = $_POST['txtDirEmpresa'];
+            $strIva         = $_POST['txtIva'];
+
+            $queryUpd = mysqli_query($conection,"UPDATE configuracion SET nit = $intNit,
+                                                                        nombre= '$strNombre',
+                                                                        razon_social = '$strRSocial',
+                                                                        telefono = '$intTel',
+                                                                        email = '$strEmail',
+                                                                        direccion = '$strDir',
+                                                                        iva = $strIva
+                                                                       WHERE id = 1 ");
+            
+            mysqli_close($conection);
+            if($queryUpd){
+               $code = '00';
+               $msg = "Datos actualizados correctamente.";
+            }else{
+               $code = '2';
+               $msg = "Error al actualizar datos.";
+            }
+         }
+         $arrayData = array('cod' => $code, 'msg' => $msg);
+         echo json_encode($arrayData,JSON_UNESCAPED_UNICODE);
+         exit;
+      }
+
 
    }
    exit;
